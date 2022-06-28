@@ -1,0 +1,15 @@
+# yarn ignore
+../
+.yarn
+.yarnrc.yml
+yarn.lock
+yarn-error.log
+
+# compiled output
+node_modules
+package-lock.json
+
+#environtment
+env
+dockerfiles
+pgdata

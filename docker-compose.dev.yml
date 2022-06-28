@@ -1,0 +1,32 @@
+version: '3'
+services:
+  deliveryfood-db: 
+    image: postgres:alpine
+    restart: always
+    env_file:
+      - ./env/.env.dev
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    networks:
+      - deliveryfood_network
+  deliveryfood-api:
+    image: deliveryfood-api
+    env_file:
+      - ./env/.env.dev
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile-dev
+    volumes:
+      - .:/app # create volumn in current directory of container
+      - /app/node_modules # anonymus/unnamed volumn in container
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    depends_on:
+      - deliveryfood-db
+    restart: unless-stopped
+    networks:
+      - deliveryfood_network
+volumes:
+  pgdata:
+networks:
+  deliveryfood_network:

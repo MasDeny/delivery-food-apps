@@ -1,0 +1,50 @@
+{
+  "name": "food-delivery",
+  "version": "1.0.0",
+  "description": "Simple Food delivery using Typescript and TDD concept",
+  "license": "MIT",
+  "author": "MasDeny<kickdeny@gmail.com>",
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "express": "^4.18.1",
+    "inversify": "^6.0.1",
+    "inversify-express-utils": "^6.4.3",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.6",
+    "uuid": "^8.3.2",
+    "winston": "^3.8.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.3",
+    "@types/node": "^18.0.0",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "supertest": "^6.2.3",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts",
+    "start": "NODE_ENV=dev ts-node --transpile-only index.ts",
+    "start:dev": "npm run build && node dist/index.js",
+    "start:watch": "nodemon --trace-warnings",
+    "build-dev": "tsc && node ./dist/index.js",
+    "build": "tsc",
+    "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/datasource.config.ts",
+    "typeorm:create": "npm run typeorm migration:create",
+    "typeorm:generate": "npm run typeorm migration:generate",
+    "typeorm:run": "npm run typeorm migration:run",
+    "typeorm:revert": "npm run typeorm migration:revert",
+    "test": "jest"
+}
+}
