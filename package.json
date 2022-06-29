@@ -40,11 +40,11 @@
     "start:watch": "nodemon --trace-warnings",
     "build-dev": "tsc && node ./dist/index.js",
     "build": "tsc",
-    "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/datasource.config.ts",
+    "typeorm": "ts-node --require tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/config/datasource.config.ts",
     "typeorm:create": "npm run typeorm migration:create",
     "typeorm:generate": "npm run typeorm migration:generate",
     "typeorm:run": "npm run typeorm migration:run",
     "typeorm:revert": "npm run typeorm migration:revert",
     "test": "jest"
-}
+  }
 }

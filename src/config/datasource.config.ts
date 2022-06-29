@@ -6,12 +6,14 @@ const appDataSource = new DataSource({
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.DATABASE_NAME,
+    synchronize: true,
+    logging: true,
     entities: [
-        __dirname + '/modules/**/entity/*.entity{.ts,.js}',
+        process.cwd() + '/src/modules/**/entity/*.entity{.ts,.js}',
     ],
     migrations: [
-        __dirname + '/migrations/**/*{.ts,.js}'
+        process.cwd() + '/src/migrations/**/*{.ts,.js}'
     ],
-    migrationsTableName: 'food_app_migrations',
+    migrationsTableName: 'deliveryfood_migrations',
 });
 export default appDataSource;
